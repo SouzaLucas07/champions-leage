@@ -11,4 +11,16 @@ export const getPlayerService = async ()=>{
     }
    
     return response;
-}
+};
+
+export const getPlayerByIdService = async(id: number)=>{
+    const data = await PlayerRepository.findPlayerById(id);
+    let response = null;
+
+    if(data){
+        response = ok(data);
+    }else{
+        response = noContent();
+    }
+    return response;
+};
